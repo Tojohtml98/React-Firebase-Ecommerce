@@ -1,0 +1,30 @@
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import NavBar from './components/NavBar'
+import ItemListContainer from './components/ItemListContainer'
+import ItemDetailContainer from './components/ItemDetailContainer'
+import Cart from './components/Cart'
+import Checkout from './components/Checkout'
+
+export default function App(){
+  return (
+    <>
+      <header>
+        <div style={{display:'flex',alignItems:'center',gap:12}}>
+          <h3 style={{margin:0}}>Mi E-Commerce</h3>
+          <small> - Proyecto Final</small>
+        </div>
+        <NavBar />
+      </header>
+      <main className="container">
+        <Routes>
+          <Route path="/" element={<ItemListContainer/>} />
+          <Route path="/category/:categoryId" element={<ItemListContainer/>} />
+          <Route path="/item/:id" element={<ItemDetailContainer/>} />
+          <Route path="/cart" element={<Cart/>} />
+          <Route path="/checkout" element={<Checkout/>} />
+        </Routes>
+      </main>
+    </>
+  )
+}
