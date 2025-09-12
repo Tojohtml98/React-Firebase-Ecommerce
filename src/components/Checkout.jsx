@@ -34,21 +34,62 @@ export default function Checkout(){
 
   if (orderId) return (
     <div className="card">
-      <h3>Compra realizada ✅</h3>
+      <h3> 🎉 ¡Compra realizada con éxito!</h3>
+      <p>Tu orden ha sido procesada correctamente</p>
       <p>ID de orden: <strong>{orderId}</strong></p>
-      <button onClick={()=>nav('/')}>Volver al inicio</button>
+      <button className="primary" onClick={()=>nav('/')}>
+        Volver al inicio
+      </button>
     </div>
   )
 
   return (
-    <div className="card">
-      <h3>Checkout</h3>
-      <form onSubmit={handleSubmit} style={{display:'grid',gap:8}}>
-        <input placeholder="Nombre" value={form.name} onChange={e=>setForm({...form,name:e.target.value})} required/>
-        <input placeholder="Email" value={form.email} onChange={e=>setForm({...form,email:e.target.value})} required/>
-        <input placeholder="Teléfono" value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})} required/>
-        <p>Total a pagar: ${totalPrice()}</p>
-        <button type="submit" disabled={loading}>{loading ? 'Procesando...' : 'Confirmar compra'}</button>
+    <div className="checkout-form">
+      <h3> 💳 Finalizar Compra</h3>
+      <p>Total a pagar: <strong className="price">${totalPrice()}</strong></p>
+      
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>Nombre completo</label>
+          <input 
+            type="text"
+            placeholder="Ingresa tu nombre" 
+            value={form.name} 
+            onChange={e=>setForm({...form,name:e.target.value})} 
+            required
+          />
+        </div>
+        
+        <div className="form-group">
+          <label>Email</label>
+          <input 
+            type="email"
+            placeholder="tu@email.com" 
+            value={form.email} 
+            onChange={e=>setForm({...form,email:e.target.value})} 
+            required
+          />
+        </div>
+        
+        <div className="form-group">
+          <label>Teléfono</label>
+          <input 
+            type="tel"
+            placeholder="+54 11 1234-5678" 
+            value={form.phone} 
+            onChange={e=>setForm({...form,phone:e.target.value})} 
+            required
+          />
+        </div>
+        
+        <button 
+          type="submit" 
+          className="primary" 
+          disabled={loading}
+          style={{width: '100%', marginTop: '16px'}}
+        >
+          {loading ? ' 🔄 Procesando...' : ' 🛒 Confirmar compra'}
+        </button>
       </form>
     </div>
   )

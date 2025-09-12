@@ -5,24 +5,44 @@ import { Link } from 'react-router-dom'
 export default function Cart(){
   const { cart, removeFromCart, clearCart, totalPrice } = useCart()
 
-  if (!cart.length) return <div className="card"><p>Carrito vacío</p><Link to="/"><button>Ir al catálogo</button></Link></div>
+  if (!cart.length) return (
+    <div className="card">
+      <h3>🛒 Carrito vacío</h3>
+      <p>No tienes productos en tu carrito</p>
+      <Link to="/">
+        <button className="primary">Ir al catálogo</button>
+      </Link>
+    </div>
+  )
 
   return (
     <div>
-      <h3>Carrito</h3>
+      <h2>🛒 Tu Carrito</h2>
       <div>
         {cart.map(item=>(
-          <div key={item.id} className="card" style={{marginBottom:8}}>
-            <h4>{item.title}</h4>
-            <p>Cantidad: {item.qty} - Subtotal: ${item.qty * item.price}</p>
-            <button onClick={()=>removeFromCart(item.id)}>Eliminar</button>
+          <div key={item.id} className="cart-item">
+            <div className="item-info">
+              <h4>{item.title}</h4>
+              <div className="quantity">Cantidad: {item.qty}</div>
+            </div>
+            <div className="item-price">${item.qty * item.price}</div>
+            <button className="secondary" onClick={()=>removeFromCart(item.id)}>
+              🗑️ Eliminar
+            </button>
           </div>
         ))}
       </div>
-      <h4>Total: ${totalPrice()}</h4>
-      <div style={{display:'flex',gap:8}}>
-        <button onClick={clearCart}>Vaciar carrito</button>
-        <Link to="/checkout"><button>Finalizar compra</button></Link>
+      
+      <div className="cart-total">
+        <h3>Total: ${totalPrice()}</h3>
+        <div style={{display:'flex',gap:16,justifyContent:'center'}}>
+          <button className="secondary" onClick={clearCart}>
+            Vaciar carrito
+          </button>
+          <Link to="/checkout">
+            <button className="primary">Finalizar compra</button>
+          </Link>
+        </div>
       </div>
     </div>
   )

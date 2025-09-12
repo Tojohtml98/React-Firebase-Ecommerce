@@ -6,21 +6,28 @@ import { useParams } from 'react-router-dom'
 export default function ItemListContainer(){
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const { categoryId } = useParams()
 
   useEffect(()=>{
     setLoading(true)
+    setError(null)
     getProducts().then(data=>{
+      console.log('Products loaded:', data) // Debug log
       if (categoryId){
         setItems(data.filter(p => p.category === categoryId))
       } else {
         setItems(data)
       }
-    }).catch(console.error).finally(()=>setLoading(false))
+    }).catch(err => {
+      console.error('Error loading products:', err)
+      setError(err.message)
+    }).finally(()=>setLoading(false))
   },[categoryId])
 
-  if (loading) return <p>Loading productos...</p>
-  if (!items.length) return <p>No hay productos en esta categoría</p>
+  if (loading) return <div className="loading">Cargando productos...</div>
+  if (error) return <div className="loading">Error: {error}</div>
+  if (!items.length) return <div className="loading">No hay productos en esta categoría</div>
 
   return <ItemList items={items} />
 }
