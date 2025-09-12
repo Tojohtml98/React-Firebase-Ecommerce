@@ -6,7 +6,6 @@ export const products = [
     price: 8500, 
     stock: 12, 
     category: 'mates',
-    image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=400&fit=crop',
     description: 'Mate tradicional de calabaza lagenaria curada por 6 meses. Virola de alpaca plateada con grabados pampeanos. Capacidad: 250ml. Incluye instructivo de curado. Origen: Santiago del Estero.' 
   },
   { 
@@ -15,7 +14,6 @@ export const products = [
     price: 12000, 
     stock: 8, 
     category: 'mates',
-    image: 'https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=400&h=400&fit=crop',
     description: 'Tallado a mano en madera de algarrobo blanco. Diseño ergonómico con base antideslizante. Dimensiones: 9cm x 7cm. Tratamiento con aceite de tung natural. Resistente al agua y cambios de temperatura.' 
   },
   { 
@@ -24,7 +22,6 @@ export const products = [
     price: 15500, 
     stock: 6, 
     category: 'mates',
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop',
     description: 'Forrado en cuero vacuno curtido al tanino. Base de goma antideslizante reforzada. Ideal para viajes largos. Virola de acero inoxidable. Capacidad: 300ml. Resistente a golpes y caídas.' 
   },
   { 
@@ -33,7 +30,6 @@ export const products = [
     price: 18000, 
     stock: 4, 
     category: 'mates',
-    image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=400&fit=crop&sat=-20',
     description: 'Calabaza seleccionada con grabados del escudo nacional. Virola de plata 900 con baño de oro. Edición limitada numerada. Incluye certificado de autenticidad y estuche de terciopelo.' 
   },
   
@@ -44,7 +40,6 @@ export const products = [
     price: 3500, 
     stock: 25, 
     category: 'bombillas',
-    image: 'https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=400&h=400&fit=crop&brightness=10',
     description: 'Aleación de alpaca con baño de platino. Filtro de 7 orificios para yerba fina. Largo: 17cm. Pico anatómico anti-quemaduras. Fácil limpieza con cepillo incluido.' 
   },
   { 
@@ -53,7 +48,6 @@ export const products = [
     price: 4200, 
     stock: 20, 
     category: 'bombillas',
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop&sat=-30',
     description: 'Acero inoxidable 316L grado médico. Filtro desmontable de malla fina. Resistente a ácidos y corrosión. Largo: 18cm. Ideal para yerbas compuestas y con hierbas.' 
   },
   { 
@@ -62,7 +56,6 @@ export const products = [
     price: 5800, 
     stock: 15, 
     category: 'bombillas',
-    image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=400&fit=crop&hue=30',
     description: 'Diseño tradicional del NOA. Pico curvado ergonómico. Alpaca martillada a mano. Filtro cónico de 5 niveles. Grabados mapuches auténticos. Largo: 16cm.' 
   },
   { 
@@ -71,7 +64,6 @@ export const products = [
     price: 25000, 
     stock: 3, 
     category: 'bombillas',
-    image: 'https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=400&h=400&fit=crop&brightness=20',
     description: 'Plata 925 maciza con grabados del poema nacional. Filtro de oro blanco. Pico con incrustaciones de lapislázuli. Estuche de cuero repujado. Certificado de pureza incluido.' 
   },
   
@@ -82,7 +74,6 @@ export const products = [
     price: 2800, 
     stock: 50, 
     category: 'yerbas',
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop&hue=60',
     description: 'Cosecha 2024 de Misiones. Estacionamiento natural de 18 meses. Blend 70% hoja, 30% palo. Sabor intenso y duradero. Sin aditivos artificiales. Certificación orgánica.' 
   },
   { 
@@ -91,7 +82,6 @@ export const products = [
     price: 3200, 
     stock: 40, 
     category: 'yerbas',
-    image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=400&fit=crop&hue=90',
     description: 'Yerba premium con palo de Corrientes. Molienda gruesa tradicional. Estacionamiento en cámaras de roble. Notas herbales y cítricas. Ideal para cebar todo el día.' 
   },
   { 
@@ -100,7 +90,6 @@ export const products = [
     price: 2900, 
     stock: 45, 
     category: 'yerbas',
-    image: 'https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=400&h=400&fit=crop&hue=120',
     description: 'La yerba de los argentinos desde 1921. Blend equilibrado 60/40. Secado a leña de eucalipto. Sabor tradicional y consistente. Envasado al vacío para mayor frescura.' 
   },
   { 
@@ -109,7 +98,6 @@ export const products = [
     price: 3100, 
     stock: 35, 
     category: 'yerbas',
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop&hue=150',
     description: 'Blend suave con menta, peperina y cedrón. Ideal para principiantes. Sin polvo. Molienda media. Cultivada en suelos rojos misioneros. Certificación sustentable.' 
   },
   { 
@@ -118,7 +106,6 @@ export const products = [
     price: 3400, 
     stock: 30, 
     category: 'yerbas',
-    image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=400&fit=crop&hue=180',
     description: 'Sin palo, 100% hoja pura. Sabor intenso y concentrado. Estacionamiento de 24 meses. Origen: Oberá, Misiones. Para paladares exigentes. Molienda fina premium.' 
   },
   
@@ -128,7 +115,7 @@ export const products = [
     title: 'Termo Stanley Classic 1L - Verde Militar', 
     price: 18500, 
     stock: 12, 
-    category: 'termos', 
+    category: 'termos',
     description: 'Acero inoxidable 18/8. Mantiene calor por 24hs, frío por 48hs. Tapa-vaso de 236ml. Manija plegable. Garantía de por vida. Resistente a golpes. Apto lavavajillas.' 
   },
   { 
@@ -136,7 +123,7 @@ export const products = [
     title: 'Termo Lumilagro Clásico 1L - Acero', 
     price: 12000, 
     stock: 18, 
-    category: 'termos', 
+    category: 'termos',
     description: 'Fabricación nacional argentina. Doble pared al vacío. Conserva temperatura por 12hs. Pico vertedor anti-goteo. Base antideslizante. Repuestos disponibles.' 
   },
   { 
@@ -144,7 +131,7 @@ export const products = [
     title: 'Termo Contigo West Loop 750ml', 
     price: 22000, 
     stock: 8, 
-    category: 'termos', 
+    category: 'termos',
     description: 'Sistema AUTOSEAL anti-derrame. Una mano para abrir/cerrar. Acero inoxidable premium. Mantiene calor 5hs. Apto para auto. Libre de BPA. Garantía 2 años.' 
   },
   { 
@@ -152,7 +139,7 @@ export const products = [
     title: 'Termo Waterdog Familiar 1.2L', 
     price: 9500, 
     stock: 20, 
-    category: 'termos', 
+    category: 'termos',
     description: 'Gran capacidad para compartir. Doble pared aislante. Tapa rosca hermética. Conserva temperatura 8hs. Acero inoxidable 304. Excelente relación precio-calidad.' 
   },
   
@@ -162,7 +149,7 @@ export const products = [
     title: 'Azucarera Artesanal de Quebracho', 
     price: 4500, 
     stock: 15, 
-    category: 'accesorios', 
+    category: 'accesorios',
     description: 'Tallada en madera de quebracho colorado. Tapa hermética con imán. Cuchara de algarrobo incluida. Capacidad: 200g. Tratamiento anti-humedad. Diseño tradicional del NOA.' 
   },
   { 
@@ -170,7 +157,7 @@ export const products = [
     title: 'Yerbera Gaucha de Cuero Repujado', 
     price: 6800, 
     stock: 12, 
-    category: 'accesorios', 
+    category: 'accesorios',
     description: 'Cuero vacuno curtido vegetal. Repujado a mano con motivos criollos. Cierre magnético invisible. Capacidad: 500g. Forro interior impermeable. Correa ajustable.' 
   },
   { 
@@ -178,7 +165,7 @@ export const products = [
     title: 'Kit Limpieza Bombillas Profesional', 
     price: 1500, 
     stock: 30, 
-    category: 'accesorios', 
+    category: 'accesorios',
     description: 'Set de 3 cepillos: cerdas naturales, alambre y nylon. Varilla flexible 20cm. Pastillas efervescentes x10. Instructivo de limpieza. Estuche organizador incluido.' 
   },
   { 
@@ -186,7 +173,7 @@ export const products = [
     title: 'Porta Mate Patagónico de Cuero', 
     price: 3200, 
     stock: 18, 
-    category: 'accesorios', 
+    category: 'accesorios',
     description: 'Cuero de guanaco sintético. Forro acolchado interno. Cierre con velcro reforzado. Mosquetón para enganchar. Colores: marrón, negro, bordó. Lavable.' 
   },
   { 
@@ -194,7 +181,7 @@ export const products = [
     title: 'Bandeja Matera "El Fogón"', 
     price: 8900, 
     stock: 10, 
-    category: 'accesorios', 
+    category: 'accesorios',
     description: 'Madera de caldén con lustre natural. Espacios para mate, bombilla, azúcar y yerba. Dimensiones: 25x15cm. Patas antideslizantes. Grabado láser personalizable.' 
   },
   
@@ -204,7 +191,7 @@ export const products = [
     title: 'Set Matero "Primer Mate" - Iniciación', 
     price: 15800, 
     stock: 8, 
-    category: 'sets', 
+    category: 'sets',
     description: 'Kit completo para principiantes: mate de calabaza curado + bombilla de alpaca + yerba Amanda 500g + termo Waterdog 750ml + instructivo ilustrado + video tutorial QR.' 
   },
   { 
@@ -212,7 +199,7 @@ export const products = [
     title: 'Set Matero "El Patrón" - Premium', 
     price: 35000, 
     stock: 5, 
-    category: 'sets', 
+    category: 'sets',
     description: 'Colección de lujo: mate de algarrobo tallado + bombilla de plata + termo Stanley + yerbera de cuero + azucarera + bandeja + yerba premium. Estuche de madera.' 
   },
   { 
@@ -220,7 +207,7 @@ export const products = [
     title: 'Set Matero "Ruta 40" - Viajero', 
     price: 22500, 
     stock: 7, 
-    category: 'sets', 
+    category: 'sets',
     description: 'Kit portátil: mate camionero + termo compacto + yerbera plegable + kit limpieza + yerba en sachets x20 + bolso organizador impermeable. Ideal para aventuras.' 
   },
   
@@ -230,7 +217,7 @@ export const products = [
     title: 'Mate Ancestral de Asta Patagónica', 
     price: 28000, 
     stock: 3, 
-    category: 'mates', 
+    category: 'mates',
     description: 'Tallado en asta de búfalo de la Patagonia. Pieza única numerada. Grabados tehuelches auténticos. Virola de plata mapuche. Certificado de origen. Estuche de cuero crudo.' 
   },
   { 
@@ -238,7 +225,7 @@ export const products = [
     title: 'Mate de Porcelana "Tradición Porteña"', 
     price: 16500, 
     stock: 6, 
-    category: 'mates', 
+    category: 'mates',
     description: 'Porcelana de Limoges francesa. Diseños de fileteado porteño. Doble pared térmica. Base de silicona antideslizante. Apto microondas y lavavajillas. Edición limitada.' 
   },
   { 
@@ -246,7 +233,7 @@ export const products = [
     title: 'Mate Térmico "Innovación Gaucha"', 
     price: 19800, 
     stock: 9, 
-    category: 'mates', 
+    category: 'mates',
     description: 'Tecnología de doble pared al vacío. Mantiene yerba a temperatura ideal por 2hs. Acero inoxidable 316L. Indicador LED de temperatura. Base magnética. Carga USB.' 
   }
 ]
