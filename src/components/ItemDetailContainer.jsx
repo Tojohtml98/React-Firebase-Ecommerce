@@ -15,7 +15,7 @@ export default function ItemDetailContainer(){
     }).catch(console.error).finally(()=>setLoading(false))
   },[id])
 
-  if (loading) return <p>Loading detalle...</p>
+  if (loading) return <p className="loading">Cargando producto…</p>
   if (!item) return <p>Producto no encontrado</p>
 
   return <ItemDetail item={item} />

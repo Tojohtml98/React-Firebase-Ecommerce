@@ -21,7 +21,7 @@ export default function Checkout(){
       date: new Date().toISOString()
     }
     try {
-      const id = await createOrder(order)
+      const { id } = await createOrder(order)
       setOrderId(id)
       clearCart()
     } catch(err){
@@ -34,26 +34,26 @@ export default function Checkout(){
 
   if (orderId) return (
     <div className="card">
-      <h3> 🎉 ¡Compra realizada con éxito!</h3>
-      <p>Tu orden ha sido procesada correctamente</p>
-      <p>ID de orden: <strong>{orderId}</strong></p>
+      <h3>Pedido confirmado</h3>
+      <p>Gracias por tu compra. Este es tu número de pedido:</p>
+      <p>Número de pedido: <strong>{orderId}</strong></p>
       <button className="primary" onClick={()=>nav('/')}>
-        Volver al inicio
+        Volver al catálogo
       </button>
     </div>
   )
 
   return (
     <div className="checkout-form">
-      <h3> 💳 Finalizar Compra</h3>
-      <p>Total a pagar: <strong className="price">${totalPrice()}</strong></p>
+      <h3>Checkout</h3>
+      <p>Total: <strong className="price">${totalPrice()}</strong></p>
       
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Nombre completo</label>
+          <label>Nombre y apellido</label>
           <input 
             type="text"
-            placeholder="Ingresa tu nombre" 
+            placeholder="Como figure en la entrega"
             value={form.name} 
             onChange={e=>setForm({...form,name:e.target.value})} 
             required
@@ -88,7 +88,7 @@ export default function Checkout(){
           disabled={loading}
           style={{width: '100%', marginTop: '16px'}}
         >
-          {loading ? ' 🔄 Procesando...' : ' 🛒 Confirmar compra'}
+          {loading ? 'Enviando…' : 'Confirmar pedido'}
         </button>
       </form>
     </div>

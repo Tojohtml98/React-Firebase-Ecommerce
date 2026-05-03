@@ -13,7 +13,6 @@ export default function ItemListContainer(){
     setLoading(true)
     setError(null)
     getProducts().then(data=>{
-      console.log('Products loaded:', data) // Debug log
       if (categoryId){
         setItems(data.filter(p => p.category === categoryId))
       } else {

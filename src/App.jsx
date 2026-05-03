@@ -11,8 +11,8 @@ export default function App(){
     <>
       <header>
         <div style={{display:'flex',alignItems:'center',gap:12}}>
-          <h3 style={{margin:0}}>🧉 MateStore</h3>
-          <small>- Todo para el mate argentino</small>
+          <h3 style={{margin:0}}>MateStore</h3>
+          <small>Yerba, mates y accesorios · demo front-end</small>
         </div>
         <NavBar />
       </header>

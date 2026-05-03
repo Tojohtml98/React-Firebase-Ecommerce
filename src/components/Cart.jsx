@@ -7,8 +7,8 @@ export default function Cart(){
 
   if (!cart.length) return (
     <div className="card">
-      <h3>🛒 Carrito vacío</h3>
-      <p>No tienes productos en tu carrito</p>
+      <h3>Carrito vacío</h3>
+      <p>Agregá productos desde el catálogo.</p>
       <Link to="/">
         <button className="primary">Ir al catálogo</button>
       </Link>
@@ -17,7 +17,7 @@ export default function Cart(){
 
   return (
     <div>
-      <h2>🛒 Tu Carrito</h2>
+      <h2>Carrito</h2>
       <div>
         {cart.map(item=>(
           <div key={item.id} className="cart-item">
@@ -27,7 +27,7 @@ export default function Cart(){
             </div>
             <div className="item-price">${item.qty * item.price}</div>
             <button className="secondary" onClick={()=>removeFromCart(item.id)}>
-              🗑️ Eliminar
+              Quitar
             </button>
           </div>
         ))}

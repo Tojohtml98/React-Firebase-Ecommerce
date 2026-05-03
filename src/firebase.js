@@ -1,15 +1,14 @@
 /*
-  firebase.js
-  - Reads VITE_FIREBASE_* env vars (Vite uses VITE_ prefix from .env)
-  - If env vars are missing, falls back to mock functions that use src/mock_products.js
+  firebase.js — Firestore when configured; otherwise catalog mock from mock_products.js
 */
 import { products as mockProducts } from './mock_products'
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { collection, getDocs, doc, getDoc, addDoc } from 'firebase/firestore';
 
-// Force mock mode for now to fix loading issue
-const useMock = true; // !import.meta.env.VITE_FIREBASE_API_KEY;
+const hasFirebaseConfig = Boolean(import.meta.env.VITE_FIREBASE_API_KEY);
+const forceMock = import.meta.env.VITE_USE_MOCK === 'true';
+const useMock = forceMock || !hasFirebaseConfig;
 
 // Firebase setup
 let db = null;
@@ -37,9 +36,7 @@ async function initFirebase() {
 
 export async function getProducts() {
   if (useMock) {
-    // simulate network delay
     await new Promise(r => setTimeout(r, 300))
-    console.log('Using mock products:', mockProducts.length, 'items')
     return mockProducts
   }
   
