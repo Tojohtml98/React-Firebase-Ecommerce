@@ -9,6 +9,7 @@ import { collection, getDocs, doc, getDoc, addDoc } from 'firebase/firestore';
 const hasFirebaseConfig = Boolean(import.meta.env.VITE_FIREBASE_API_KEY);
 const forceMock = import.meta.env.VITE_USE_MOCK === 'true';
 const useMock = forceMock || !hasFirebaseConfig;
+const FIRESTORE_TIMEOUT_MS = Number(import.meta.env.VITE_FIREBASE_TIMEOUT_MS || 7000);
 
 // Firebase setup
 let db = null;
@@ -34,6 +35,15 @@ async function initFirebase() {
   }
 }
 
+function withTimeout(promise, label) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => {
+      setTimeout(() => reject(new Error(`${label} timed out`)), FIRESTORE_TIMEOUT_MS);
+    }),
+  ]);
+}
+
 export async function getProducts() {
   if (useMock) {
     await new Promise(r => setTimeout(r, 300))
@@ -46,8 +56,13 @@ export async function getProducts() {
     return mockProducts
   }
   
-  const snap = await getDocs(collection(db, 'products'))
-  return snap.docs.map(d => ({ id: d.id, ...d.data() }))
+  try {
+    const snap = await withTimeout(getDocs(collection(db, 'products')), 'getProducts');
+    return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  } catch (error) {
+    console.warn('Firestore unavailable, using mock products:', error.message);
+    return mockProducts;
+  }
 }
 
 export async function getProductById(id) {
@@ -62,9 +77,14 @@ export async function getProductById(id) {
     return mockProducts.find(p => p.id === id) || null
   }
   
-  const d = await getDoc(doc(db, 'products', id))
-  if (!d.exists()) return null
-  return { id: d.id, ...d.data() }
+  try {
+    const d = await withTimeout(getDoc(doc(db, 'products', id)), 'getProductById');
+    if (!d.exists()) return null;
+    return { id: d.id, ...d.data() };
+  } catch (error) {
+    console.warn('Firestore unavailable, using mock product detail:', error.message);
+    return mockProducts.find(p => p.id === id) || null;
+  }
 }
 
 export async function createOrder(order) {
@@ -79,9 +99,17 @@ export async function createOrder(order) {
     return { id: 'order_' + Date.now() }
   }
   
-  const docRef = await addDoc(collection(db, 'orders'), {
-    ...order,
-    date: new Date()
-  })
-  return { id: docRef.id }
+  try {
+    const docRef = await withTimeout(
+      addDoc(collection(db, 'orders'), {
+        ...order,
+        date: new Date(),
+      }),
+      'createOrder'
+    );
+    return { id: docRef.id };
+  } catch (error) {
+    console.warn('Firestore unavailable, generating local order id:', error.message);
+    return { id: 'order_' + Date.now() };
+  }
 }
