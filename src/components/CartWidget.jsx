@@ -1,13 +1,17 @@
 import React from 'react'
-import { useCart } from '../context/CartContext'
 import { Link } from 'react-router-dom'
+import { useCart } from '../context/CartContext'
+import { IconBag } from './icons'
 
-export default function CartWidget(){
+export default function CartWidget() {
   const { totalQty } = useCart()
+  const qty = totalQty()
+
   return (
-    <Link to="/cart" style={{display:'flex',alignItems:'center'}}>
-      <img src="https://img.icons8.com/ios-filled/24/ffffff/shopping-cart.png" alt="Ver carrito" width={24} height={24}/>
-      <span className="cart-badge">{totalQty()}</span>
+    <Link to="/cart" className="cart-btn" aria-label={`Ver carrito · ${qty} ítems`}>
+      <IconBag />
+      <span>Carrito</span>
+      <span className="cart-btn-qty mono-num">{qty}</span>
     </Link>
   )
 }
