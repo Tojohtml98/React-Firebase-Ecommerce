@@ -1,4 +1,4 @@
-# MateStore — E‑commerce frontend
+# MateStore · React E-commerce Frontend
 
 Single-page store built with **React 18**, **Vite**, and **React Router**. Product catalog and checkout persist orders through **Firestore** when Firebase env vars are set; otherwise the app serves a deterministic local catalog so reviewers can clone and run immediately.
 
