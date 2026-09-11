@@ -1,39 +1,39 @@
-// MateStore · Cultura matera warm-dark
-// Palette en OKLCH: marrón café profundo, crema cálido, cobre/ámbar, verde mate
+// MateStore · Cultura matera artesanal, versión clara
+// Palette en OKLCH: crema cálido, verde bosque profundo, cobre/terracota
 
 :root {
-  --bg:           oklch(0.165 0.022 50);
-  --bg-2:         oklch(0.195 0.025 52);
-  --surface:      oklch(0.225 0.028 55);
-  --surface-2:    oklch(0.260 0.028 55);
-  --border:       oklch(0.305 0.024 55);
-  --border-strong:oklch(0.380 0.028 55);
+  --bg:           oklch(0.970 0.014 78);
+  --bg-2:         oklch(0.945 0.018 74);
+  --surface:      oklch(0.990 0.006 80);
+  --surface-2:    oklch(0.960 0.016 72);
+  --border:       oklch(0.870 0.020 68);
+  --border-strong:oklch(0.740 0.028 62);
 
-  --fg:           oklch(0.955 0.020 80);
-  --fg-muted:     oklch(0.720 0.025 65);
-  --fg-dim:       oklch(0.520 0.020 60);
+  --fg:           oklch(0.240 0.024 45);
+  --fg-muted:     oklch(0.430 0.030 50);
+  --fg-dim:       oklch(0.580 0.024 55);
 
-  --copper:       oklch(0.735 0.150 55);
-  --copper-hover: oklch(0.800 0.140 60);
-  --copper-soft:  oklch(0.310 0.065 55);
-  --copper-fg:    oklch(0.18 0.030 55);
+  --copper:       oklch(0.520 0.150 42);
+  --copper-hover: oklch(0.450 0.150 40);
+  --copper-soft:  oklch(0.925 0.045 50);
+  --copper-fg:    oklch(0.985 0.008 80);
 
-  --mate:         oklch(0.650 0.150 145);
-  --mate-soft:    oklch(0.280 0.060 145);
+  --mate:         oklch(0.400 0.090 148);
+  --mate-soft:    oklch(0.930 0.045 148);
 
-  --danger:       oklch(0.640 0.20 25);
-  --danger-soft:  oklch(0.300 0.080 25);
+  --danger:       oklch(0.480 0.180 25);
+  --danger-soft:  oklch(0.935 0.045 25);
 
   --radius:       12px;
   --radius-lg:    16px;
-  --shadow-sm:    0 1px 2px oklch(0 0 0 / 0.25);
-  --shadow:       0 6px 24px oklch(0 0 0 / 0.40);
-  --shadow-lg:    0 20px 60px oklch(0 0 0 / 0.50);
+  --shadow-sm:    0 1px 2px oklch(0.30 0.03 50 / 0.07);
+  --shadow:       0 6px 24px oklch(0.30 0.03 50 / 0.10);
+  --shadow-lg:    0 20px 60px oklch(0.30 0.03 50 / 0.16);
 
   --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
   --max-w:        72rem;
 
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 // Reset
@@ -57,10 +57,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  // Subtle warm-grain texture
+  // Subtle warm-paper texture
   background-image:
-    radial-gradient(at 12% 6%, oklch(0.30 0.05 60 / 0.25) 0, transparent 45%),
-    radial-gradient(at 88% 100%, oklch(0.26 0.05 35 / 0.20) 0, transparent 50%);
+    radial-gradient(at 12% 6%, oklch(0.80 0.05 145 / 0.14) 0, transparent 45%),
+    radial-gradient(at 88% 100%, oklch(0.78 0.06 50 / 0.16) 0, transparent 50%);
   background-attachment: fixed;
 }
 
@@ -76,7 +76,7 @@ img {
 }
 
 ::selection {
-  background: oklch(0.735 0.150 55 / 0.32);
+  background: oklch(0.520 0.150 42 / 0.22);
   color: var(--fg);
 }
 
@@ -118,7 +118,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: oklch(0.165 0.022 50 / 0.82);
+  background: oklch(0.970 0.014 78 / 0.85);
   backdrop-filter: blur(14px) saturate(120%);
   border-bottom: 1px solid var(--border);
 
@@ -348,7 +348,7 @@ img {
       height: 100%;
       object-fit: cover;
       transition: transform 600ms var(--ease-out);
-      filter: brightness(0.95) saturate(0.92);
+      filter: brightness(1) saturate(1.04);
     }
 
     // soft warm vignette
@@ -356,7 +356,7 @@ img {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 60%, oklch(0.10 0.02 50 / 0.45) 100%);
+      background: linear-gradient(180deg, transparent 65%, oklch(0.30 0.03 50 / 0.14) 100%);
       pointer-events: none;
     }
   }
@@ -366,7 +366,7 @@ img {
     top: 12px;
     left: 12px;
     z-index: 2;
-    background: oklch(0.165 0.022 50 / 0.85);
+    background: oklch(0.990 0.006 80 / 0.90);
     backdrop-filter: blur(8px);
     color: var(--fg-muted);
     font-size: 0.7rem;
@@ -464,12 +464,12 @@ img {
     aspect-ratio: 1 / 1;
     position: relative;
 
-    img { width: 100%; height: 100%; object-fit: cover; }
+    img { width: 100%; height: 100%; object-fit: cover; filter: brightness(1) saturate(1.04); }
     &::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 70%, oklch(0.10 0.02 50 / 0.50) 100%);
+      background: linear-gradient(180deg, transparent 70%, oklch(0.30 0.03 50 / 0.16) 100%);
       pointer-events: none;
     }
   }
@@ -527,7 +527,7 @@ img {
     padding: 20px;
     border-radius: var(--radius);
     background: var(--mate-soft);
-    border: 1px solid oklch(0.45 0.10 145 / 0.4);
+    border: 1px solid oklch(0.400 0.090 148 / 0.35);
 
     p { color: var(--fg); font-weight: 500; display:flex; gap:8px; align-items:center; }
     .row { display: flex; gap: 10px; }
@@ -817,7 +817,7 @@ img {
         &:focus {
           outline: none;
           border-color: var(--copper);
-          box-shadow: 0 0 0 4px oklch(0.735 0.150 55 / 0.18);
+          box-shadow: 0 0 0 4px oklch(0.520 0.150 42 / 0.16);
         }
       }
     }

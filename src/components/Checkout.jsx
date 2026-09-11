@@ -126,7 +126,7 @@ export default function Checkout() {
               display: 'flex', gap: 10, alignItems: 'flex-start',
               padding: '10px 12px', borderRadius: 10,
               background: 'var(--danger-soft)', color: 'var(--danger)',
-              border: '1px solid oklch(0.55 0.16 25 / 0.4)',
+              border: '1px solid oklch(0.480 0.180 25 / 0.35)',
               fontSize: '0.88rem', marginBottom: 16
             }}>
               <IconAlert style={{ flexShrink: 0, marginTop: 2 }} />
