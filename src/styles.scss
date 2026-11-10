@@ -381,6 +381,23 @@ img {
   }
 }
 
+// Celular: una sola fila deslizable (7 categorías en una píldora de 3 renglones quedaban deformes)
+@media (max-width: 720px) {
+  .catalog-toolbar { gap: 10px; }
+  .category-index {
+    flex-wrap: nowrap;
+    width: 100%;
+    border-radius: 999px;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    // Fundido a la derecha: avisa que hay más categorías deslizando
+    mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+    &::-webkit-scrollbar { display: none; }
+    a { scroll-snap-align: start; }
+  }
+}
+
 // Product grid
 .product-grid {
   display: grid;
@@ -786,7 +803,8 @@ img {
         color: var(--fg-muted);
         font-size: 0.82rem;
         display: flex;
-        gap: 10px;
+        flex-wrap: wrap;
+        gap: 2px 14px; // sin separador "·": al bajar de renglón no queda colgando
         align-items: center;
         flex-wrap: wrap;
       }

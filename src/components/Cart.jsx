@@ -38,7 +38,6 @@ export default function Cart() {
               <h4>{item.title}</h4>
               <div className="meta">
                 <span className="mono-num">${item.price.toLocaleString('es-AR')} c/u</span>
-                <span style={{ color: 'var(--fg-dim)' }}>·</span>
                 <span>Cantidad {item.qty}</span>
               </div>
             </div>
@@ -55,7 +54,7 @@ export default function Cart() {
       <aside className="cart-summary">
         <h3>Resumen</h3>
         <div className="row">
-          <span>{totalQty()} ítems</span>
+          <span>{totalQty()} {totalQty() === 1 ? 'producto' : 'productos'}</span>
           <span className="mono-num">${totalPrice().toLocaleString('es-AR')}</span>
         </div>
         <div className="row">

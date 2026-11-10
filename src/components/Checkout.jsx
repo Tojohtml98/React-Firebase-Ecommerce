@@ -141,7 +141,7 @@ export default function Checkout() {
         </form>
 
         <aside className="checkout-recap">
-          <h3>Tu pedido · {totalQty()} ítems</h3>
+          <h3>Tu pedido · {totalQty()} {totalQty() === 1 ? 'producto' : 'productos'}</h3>
           <ul>
             {cart.map(i => (
               <li key={i.id}>
