@@ -1,6 +1,6 @@
 // Búsqueda client-side: insensible a mayúsculas y tildes ("yerba organica" encuentra "Yerba Orgánica").
 export const normalize = (str = '') =>
-  str.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim()
+  str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim()
 
 // Cada palabra de la búsqueda tiene que aparecer en título, descripción o categoría (AND).
 export function filterProducts(products, query) {
