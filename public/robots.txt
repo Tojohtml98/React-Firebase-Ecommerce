@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://matestore.vercel.app/sitemap.xml

@@ -459,6 +459,7 @@ img {
 
   &-category {
     @extend .eyebrow;
+    color: var(--fg-muted); // fg-dim no llega a contraste AA sobre la tarjeta
   }
 
   &-title {
@@ -1008,3 +1009,16 @@ img {
 }
 
 .fade-up { animation: fadeUp 260ms var(--ease-out); }
+
+// Texto solo para lectores de pantalla
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

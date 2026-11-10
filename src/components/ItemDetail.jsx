@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import ItemCount from './ItemCount'
 import { useCart } from '../context/CartContext'
 import { IconCheck, IconArrowLeft } from './icons'
+import { responsiveSrcSet } from '../utils/image'
 
 const CATEGORY_LABEL = {
   mates: 'Mates',
@@ -31,7 +32,12 @@ export default function ItemDetail({ item }) {
 
       <article className="detail">
         <div className="detail-media">
-          <img src={item.image} alt={item.title} />
+          <img
+            src={item.image}
+            srcSet={responsiveSrcSet(item.image)}
+            sizes="(max-width: 880px) 92vw, 560px"
+            alt={item.title}
+          />
         </div>
 
         <div>

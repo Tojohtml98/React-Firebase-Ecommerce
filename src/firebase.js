@@ -2,9 +2,7 @@
   firebase.js — Firestore when configured; otherwise catalog mock from mock_products.js
 */
 import { products as mockProducts } from './mock_products'
-import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
-import { collection, getDocs, doc, getDoc, addDoc } from 'firebase/firestore';
+// Firebase se importa bajo demanda: sin config, el SDK (~80 KiB) ni se descarga.
 
 const hasFirebaseConfig = Boolean(import.meta.env.VITE_FIREBASE_API_KEY);
 const forceMock = import.meta.env.VITE_USE_MOCK === 'true';
@@ -13,6 +11,7 @@ const FIRESTORE_TIMEOUT_MS = Number(import.meta.env.VITE_FIREBASE_TIMEOUT_MS || 
 
 // Firebase setup
 let db = null;
+let fs = null; // módulo firebase/firestore cargado dinámicamente
 let firebaseInitialized = false;
 
 async function initFirebase() {
@@ -27,8 +26,12 @@ async function initFirebase() {
       messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
       appId: import.meta.env.VITE_FIREBASE_APP_ID
     }
-    const app = initializeApp(firebaseConfig);
-    db = getFirestore(app);
+    const [{ initializeApp }, firestore] = await Promise.all([
+      import('firebase/app'),
+      import('firebase/firestore'),
+    ]);
+    fs = firestore;
+    db = fs.getFirestore(initializeApp(firebaseConfig));
     firebaseInitialized = true;
   } catch (error) {
     console.warn('Firebase initialization failed, using mock data:', error);
@@ -57,7 +60,7 @@ export async function getProducts() {
   }
   
   try {
-    const snap = await withTimeout(getDocs(collection(db, 'products')), 'getProducts');
+    const snap = await withTimeout(fs.getDocs(fs.collection(db, 'products')), 'getProducts');
     return snap.docs.map(d => ({ id: d.id, ...d.data() }));
   } catch (error) {
     console.warn('Firestore unavailable, using mock products:', error.message);
@@ -78,7 +81,7 @@ export async function getProductById(id) {
   }
   
   try {
-    const d = await withTimeout(getDoc(doc(db, 'products', id)), 'getProductById');
+    const d = await withTimeout(fs.getDoc(fs.doc(db, 'products', id)), 'getProductById');
     if (!d.exists()) return null;
     return { id: d.id, ...d.data() };
   } catch (error) {
@@ -101,7 +104,7 @@ export async function createOrder(order) {
   
   try {
     const docRef = await withTimeout(
-      addDoc(collection(db, 'orders'), {
+      fs.addDoc(fs.collection(db, 'orders'), {
         ...order,
         date: new Date(),
       }),

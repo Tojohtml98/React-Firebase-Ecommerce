@@ -8,10 +8,11 @@ export default function CartWidget() {
   const qty = totalQty()
 
   return (
-    <Link to="/cart" className="cart-btn" aria-label={`Ver carrito · ${qty} ítems`}>
+    <Link to="/cart" className="cart-btn">
       <IconBag />
       <span>Carrito</span>
       <span className="cart-btn-qty mono-num">{qty}</span>
+      <span className="sr-only">{qty === 1 ? 'producto' : 'productos'}</span>
     </Link>
   )
 }
