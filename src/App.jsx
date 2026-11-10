@@ -38,7 +38,7 @@ export default function App() {
         color: 'var(--fg-dim)',
         fontSize: '0.82rem'
       }}>
-        MateStore · Demo front-end · Catálogo, carrito y checkout en React · {new Date().getFullYear()}
+        © {new Date().getFullYear()} MateStore · Cultura matera, curada con detalle · Envíos a toda Argentina
       </footer>
     </>
   )

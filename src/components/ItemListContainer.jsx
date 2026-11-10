@@ -88,7 +88,7 @@ export default function ItemListContainer() {
           <p className="hero-sub">{copy.sub}</p>
         </div>
         <div className="hero-meta">
-          <span><strong>Demo front-end</strong> · Catálogo + Carrito + Checkout</span>
+          <span><strong>Hecho en Argentina</strong> · Productores y artesanos nacionales</span>
           <span>{loading ? 'Cargando inventario' : query ? `${visible.length} de ${items.length} piezas` : `${items.length} piezas en exhibición`}</span>
           <span>Envíos a toda Argentina · Atención por WhatsApp</span>
         </div>
