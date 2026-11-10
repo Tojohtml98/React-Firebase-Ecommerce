@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useMemo, useState } from 'react'
+import { useParams, useSearchParams } from 'react-router-dom'
 import { getProducts } from '../firebase'
 import ItemList from './ItemList'
 import NavBar from './NavBar'
-import { IconInbox, IconAlert } from './icons'
+import SearchBar from './SearchBar'
+import { filterProducts } from '../utils/search'
+import { IconInbox, IconAlert, IconSearch } from './icons'
 
 const CATEGORY_COPY = {
   '': {
@@ -48,6 +50,8 @@ export default function ItemListContainer() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const { categoryId } = useParams()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const query = searchParams.get('q') || ''
   const slug = categoryId || ''
   const copy = CATEGORY_COPY[slug] || CATEGORY_COPY['']
 
@@ -65,6 +69,16 @@ export default function ItemListContainer() {
       .finally(() => setLoading(false))
   }, [categoryId])
 
+  const visible = useMemo(() => filterProducts(items, query), [items, query])
+
+  // replace: true → tipear no llena el historial con una entrada por letra
+  const handleSearch = (value) => {
+    const next = new URLSearchParams(searchParams)
+    if (value) next.set('q', value)
+    else next.delete('q')
+    setSearchParams(next, { replace: true })
+  }
+
   return (
     <>
       <section className="hero fade-up">
@@ -75,12 +89,15 @@ export default function ItemListContainer() {
         </div>
         <div className="hero-meta">
           <span><strong>Demo front-end</strong> · Catálogo + Carrito + Checkout</span>
-          <span>{items.length > 0 && !loading ? `${items.length} piezas en exhibición` : 'Cargando inventario'}</span>
+          <span>{loading ? 'Cargando inventario' : query ? `${visible.length} de ${items.length} piezas` : `${items.length} piezas en exhibición`}</span>
           <span>Envíos a toda Argentina · Atención por WhatsApp</span>
         </div>
       </section>
 
-      <NavBar />
+      <div className="catalog-toolbar">
+        <NavBar />
+        <SearchBar value={query} onChange={handleSearch} />
+      </div>
 
       {loading ? (
         <div className="feedback">
@@ -100,8 +117,15 @@ export default function ItemListContainer() {
           <p className="feedback-title">Esta categoría está vacía</p>
           <p className="feedback-text">Probá con otra sección del catálogo.</p>
         </div>
+      ) : !visible.length ? (
+        <div className="feedback">
+          <div className="feedback-icon"><IconSearch /></div>
+          <p className="feedback-title">Sin resultados para “{query.trim()}”</p>
+          <p className="feedback-text">Probá con otra palabra o buscá en todo el catálogo.</p>
+          <button type="button" className="btn secondary" onClick={() => handleSearch('')}>Limpiar búsqueda</button>
+        </div>
       ) : (
-        <ItemList items={items} />
+        <ItemList items={visible} />
       )}
     </>
   )

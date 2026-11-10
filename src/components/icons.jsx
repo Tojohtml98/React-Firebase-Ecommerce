@@ -47,3 +47,9 @@ export const IconAlert = (p) => (
     <path d="M12 16h.01" />
   </svg>
 )
+export const IconSearch = (p) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" {...p}>
+    <circle cx="11" cy="11" r="7" />
+    <path d="m20 20-3.5-3.5" />
+  </svg>
+)

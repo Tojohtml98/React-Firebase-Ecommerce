@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink, useParams, useLocation } from 'react-router-dom'
 
 const CATEGORIES = [
   { slug: '',           label: 'Todo' },
@@ -14,13 +14,14 @@ const CATEGORIES = [
 export default function NavBar() {
   const { categoryId } = useParams()
   const active = categoryId || ''
+  const { search } = useLocation() // conserva ?q= al cambiar de categoría
 
   return (
     <nav className="category-index" aria-label="Categorías">
       {CATEGORIES.map(c => (
         <NavLink
           key={c.slug || 'all'}
-          to={c.slug ? `/category/${c.slug}` : '/'}
+          to={{ pathname: c.slug ? `/category/${c.slug}` : '/', search }}
           className={active === c.slug ? 'active' : ''}
         >
           {c.label}
